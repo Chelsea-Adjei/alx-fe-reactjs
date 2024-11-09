@@ -1,3 +1,7 @@
+import React from 'react';
+import UserContext from '../components/UserContext';
+
+
 function UserProfile(props) {
     return (
       <div style={{
