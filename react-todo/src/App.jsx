@@ -1,9 +1,10 @@
 import React from 'react';
-import TodoList from './components/TodoList';
+import TodoList from './TodoList';
 
 function App() {
   return (
-    <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
+    <div>
+      <h1>Todo List</h1>
       <TodoList />
     </div>
   );
