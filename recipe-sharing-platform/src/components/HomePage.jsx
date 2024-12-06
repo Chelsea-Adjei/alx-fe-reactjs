@@ -37,5 +37,19 @@ function HomePage() {
   );
 }
 
+<Link to={`/recipes/${recipe.id}`} key={recipe.id}>
+  <div className="bg-white rounded-lg shadow-md hover:shadow-lg transform hover:scale-105 transition duration-300 p-4">
+    <img
+      src={recipe.image}
+      alt={recipe.title}
+      className="w-full h-40 object-cover rounded-t-lg"
+    />
+    <div className="mt-4">
+      <h2 className="text-xl font-semibold">{recipe.title}</h2>
+      <p className="text-gray-600 mt-2">{recipe.summary}</p>
+    </div>
+  </div>
+</Link>
+
 export default HomePage;
 
