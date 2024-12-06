@@ -25,7 +25,7 @@ function RecipeDetail() {
       <img
         src={recipe.image}
         alt={recipe.title}
-        className="w-full h-64 object-cover rounded-lg mb-4"
+        className="w-full h-64 object-cover rounded-lg mb-4 shadow-md mb-4"
       />
       <p className="text-gray-700 mb-6">{recipe.summary}</p>
 
