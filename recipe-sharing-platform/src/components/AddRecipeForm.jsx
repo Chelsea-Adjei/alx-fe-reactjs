@@ -10,7 +10,7 @@ function AddRecipeForm() {
 
   // Handle input changes
   const handleChange = (e) => {
-    const { name, value } = e.target; // Capture name and value
+    const { name, value } = target.value; // Capture name and value
     setFormData({ ...formData, [name]: value }); // Update formData state
   };
 
