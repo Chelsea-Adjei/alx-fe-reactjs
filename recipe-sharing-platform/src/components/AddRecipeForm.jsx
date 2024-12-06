@@ -8,11 +8,13 @@ function AddRecipeForm() {
   });
   const [errors, setErrors] = useState({});
 
+  // Handle input changes
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    const { name, value } = e.target; // Capture name and value
+    setFormData({ ...formData, [name]: value }); // Update formData state
   };
 
+  // Form validation logic
   const validateForm = () => {
     const newErrors = {};
     if (!formData.title) newErrors.title = "Recipe title is required.";
@@ -26,6 +28,7 @@ function AddRecipeForm() {
     return Object.keys(newErrors).length === 0;
   };
 
+  // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validateForm()) {
@@ -55,7 +58,7 @@ function AddRecipeForm() {
             id="title"
             name="title"
             value={formData.title}
-            onChange={handleChange}
+            onChange={handleChange} // Event handler attached here
             className={`w-full px-4 py-2 border ${
               errors.title ? "border-red-500" : "border-gray-300"
             } rounded-md focus:outline-none focus:ring-2 ${
@@ -80,7 +83,7 @@ function AddRecipeForm() {
             id="ingredients"
             name="ingredients"
             value={formData.ingredients}
-            onChange={handleChange}
+            onChange={handleChange} // Event handler attached here
             rows="4"
             className={`w-full px-4 py-2 border ${
               errors.ingredients ? "border-red-500" : "border-gray-300"
@@ -106,7 +109,7 @@ function AddRecipeForm() {
             id="steps"
             name="steps"
             value={formData.steps}
-            onChange={handleChange}
+            onChange={handleChange} // Event handler attached here
             rows="6"
             className={`w-full px-4 py-2 border ${
               errors.steps ? "border-red-500" : "border-gray-300"
