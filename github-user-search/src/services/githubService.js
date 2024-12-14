@@ -29,10 +29,3 @@ export const fetchUserData = async ({ username, location, minRepos }) => {
   }
 };
 
-try {
-    const response = await fetchUsers('test');
-    setData(response);
-  } catch (error) {
-    console.error('Failed to fetch users:', error);
-    setError('Something went wrong.');
-}
