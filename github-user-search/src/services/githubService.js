@@ -1,31 +1,26 @@
 import axios from "axios";
 
-const BASE_URL = "https://api.github.com";
-const API_KEY = process.env.REACT_APP_GITHUB_API_KEY;
-
-// Function to fetch users based on advanced search criteria
 export const fetchUserData = async ({ username, location, minRepos }) => {
   try {
-    // Construct the query string
-    let query = `${username ? username : ""}`;
-    if (location) query += `+location:${location}`;
-    if (minRepos) query += `+repos:>${minRepos}`;
+    // Build the query string based on provided parameters
+    const queryParts = [];
+    if (username) queryParts.push(`user:${username}`);
+    if (location) queryParts.push(`location:${location}`);
+    if (minRepos) queryParts.push(`repos:>=${minRepos}`);
 
-    // API endpoint with the query
-    const url = `${BASE_URL}/search/users?q=${query}`;
+    const query = queryParts.join(" "); // Combine query parts with spaces
+    console.log("Constructed query:", query);
 
-    // Axios request with authorization
-    const response = await axios.get(url, {
-      headers: {
-        Authorization: `Bearer ${API_KEY}`,
-      },
-    });
+    // Make the API call to GitHub Search API
+    const response = await axios.get(
+      `https://api.github.com/search/users?q=${query}`
+    );
 
-    // Return the list of users
-    return response.data.items;
+    // Return the array of user results
+    return response.data.items; // 'items' contains the list of users
   } catch (error) {
     console.error("Error fetching user data:", error);
-    return [];
+    throw error; // Re-throw error to handle it in the calling function
   }
 };
 

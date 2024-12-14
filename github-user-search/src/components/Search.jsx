@@ -17,8 +17,10 @@ const Search = () => {
       const users = await fetchUserData({ username, location, minRepos });
       if (users.length === 0) {
         setError("Looks like we can’t find the user");
+        setResults([]);
+      } else {
+        setResults(users);
       }
-      setResults(users);
     } catch (err) {
       setError("An error occurred while fetching data. Please try again.");
     } finally {
