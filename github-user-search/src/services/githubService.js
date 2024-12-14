@@ -1,5 +1,10 @@
 import axios from "axios";
 
+export const fetchUsers = async (query) => {
+    const response = await axios.get(`https://api.github.com/search/users?q=${query}`);
+    return response.data.items;
+};
+
 export const fetchUserData = async ({ username, location, minRepos }) => {
   try {
     // Build the query string based on provided parameters
@@ -24,3 +29,10 @@ export const fetchUserData = async ({ username, location, minRepos }) => {
   }
 };
 
+try {
+    const response = await fetchUsers('test');
+    setData(response);
+  } catch (error) {
+    console.error('Failed to fetch users:', error);
+    setError('Something went wrong.');
+}
