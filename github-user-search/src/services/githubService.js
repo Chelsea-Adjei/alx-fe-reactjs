@@ -28,4 +28,3 @@ export const fetchUserData = async ({ username, location, minRepos }) => {
     throw error; // Re-throw error to handle it in the calling function
   }
 };
-
