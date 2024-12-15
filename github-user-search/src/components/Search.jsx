@@ -79,6 +79,7 @@ const Search = () => {
           >
             <img
               src={user.avatar_url}
+              loading="lazy"
               alt={user.login}
               className="w-16 h-16 rounded-full mx-auto"
             />
